@@ -1,6 +1,6 @@
-import { execAsync } from "./util";
+import { execAsync } from './util';
 
-export async function createBlogTableAsync() {
+export async function createBlogTable() {
   return await execAsync(`CREATE TABLE IF NOT EXISTS blogs (
     blog_id         VARCHAR(16) PRIMARY KEY,
     title           VARCHAR(255) NOT NULL,
@@ -12,6 +12,6 @@ export async function createBlogTableAsync() {
     last_edit_time  DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL,
     views           INTEGER DEFAULT 0,
     is_hiden        BOOL DEFAULT false NOT NULL
-    )`, "Table blogs created...");
+    )`, undefined, "Table blogs created...");
 }
 

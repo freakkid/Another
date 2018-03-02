@@ -1,3 +1,6 @@
-import { initDatabaseAsync } from "./init";
+import { initDatabase } from './init';
+import * as userModel from "./users";
 
-export { initDatabaseAsync };
+export { initDatabase };
+export { userModel };
+

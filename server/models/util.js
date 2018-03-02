@@ -1,8 +1,8 @@
-const mysql = require('mysql');
+import mysql from 'mysql';
 import { db } from '../config';
 
 
-export async function createDatabaseAsync() {
+export async function createDatabase() {
   return await new Promise(function (resolve, reject) {
     const conn = mysql.createConnection({
       host: db.host,
@@ -27,7 +27,7 @@ export async function createDatabaseAsync() {
   });
 }
 
-export async function execAsync(sqlstatement, message) {
+export async function execAsync(sqlstatement, values, message) {
   return await new Promise(function (resolve, reject) {
     const conn = mysql.createConnection(db);
     conn.connect(function (err) {
@@ -35,14 +35,35 @@ export async function execAsync(sqlstatement, message) {
         reject(err);
         return;
       }
-      conn.query(sqlstatement, function (err) {
+      conn.query(sqlstatement, values, function (err, result) {
         if (err) {
           reject(err);
           return;
         }
         conn.end();
         console.log(message);
-        resolve();
+        resolve(result);
+      });
+    })
+  });
+}
+
+export async function selectExecAsync(sqlstatement, values, message) {
+  return await new Promise(function (resolve, reject) {
+    const conn = mysql.createConnection(db);
+    conn.connect(function (err) {
+      if (err) {
+        reject(err);
+        return;
+      }
+      conn.query(sqlstatement, values, function (err, result) {
+        if (err) {
+          reject(err);
+          return;
+        }
+        conn.end();
+        console.log(message);
+        resolve(result);
       });
     })
   });

@@ -1,17 +1,14 @@
-const process = require('process');
-import { execAsync } from "./util";
-import { createUserTableAsync } from "./util";
-import { createBlogTableAsync } from "./util";
-import { createCommentTableAsync } from "./util";
+import process from 'process';
+import { createUserTable } from './users';
+import { createBlogTable } from './blogs';
+import { createCommentTable } from './comments';
 
-export async function initDatabaseAsync() {
+export async function initDatabase() {
   try {
-    await execAsync();
-    await createUserTableAsync();
-    await createBlogTableAsync();
-    await createCommentTableAsync();
+    await createUserTable();
+    await createBlogTable();
+    await createCommentTable();
   } catch (err) {
     process.exit(1);
   }
 }
-

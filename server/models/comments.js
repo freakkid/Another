@@ -1,6 +1,6 @@
-import { execAsync } from "./util";
+import { execAsync } from './util';
 
-export async function createCommentTableAsync() {
+export async function createCommentTable() {
   return await execAsync(`CREATE TABLE IF NOT EXISTS comments (
     comment_id      VARCHAR(16) PRIMARY KEY,
     blog_id         VARCHAR(16) NOT NULL,
@@ -10,5 +10,5 @@ export async function createCommentTableAsync() {
     create_time     DATETIME  DEFAULT CURRENT_TIMESTAMP NOT NULL,
     last_edit_time  DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL,
     is_hiden        BOOL DEFAULT false NOT NULL
-    )`, "Table comments created...");
+    )`, undefined, "Table comments created...");
 }
