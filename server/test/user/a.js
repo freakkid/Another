@@ -1,8 +1,8 @@
-import {assert} from 'assert';
+import assert from 'assert';
 import { initDatabase, userModel } from '../../models';
 
 
-assert
+
 async function testInsert() {
   var users = [{
     user_id: "revwrtgtr", username: "fgyuhijok", password: "vhnjkmlhh",
@@ -23,19 +23,19 @@ async function testInsert() {
   try {
     await initDatabase();
     for (let user of users) {
-      console.log(await userModel.createUser(user));
+      assert.deepEqual((await userModel.createUser(user)).affectedRows, 1);
     }
     console.log('-----------------change password-------------------')
     for (let user of users) {
-      console.log(await userModel.changePassword("123456789", user.user_id, user.password));
+      assert.deepEqual((await userModel.changePassword("123456789", user.user_id, user.password)).affectedRows, 1);
     }
     console.log('------------------get user------------------')
     for (let user of users) {
-      console.log(await userModel.getUserByEmail(user.email, "123456789"));
+      assert.deepEqual((await userModel.getUserByEmail(user.email, "123456789")).length, 1);
     }
     console.log('-----------------delete user-------------------')
     for (let user of users) {
-      console.log(await userModel.deleteUser(user.user_id, "123456789"));
+      assert.deepEqual((await userModel.deleteUser(user.user_id, "123456789")).affectedRows, 1);
     }
     console.log('------------------------------------')
     
