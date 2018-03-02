@@ -9,6 +9,10 @@ export async function createCommentTable() {
     to_uid          VARCHAR(12) NOT NULL,
     create_time     DATETIME  DEFAULT CURRENT_TIMESTAMP NOT NULL,
     last_edit_time  DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-    is_hiden        BOOL DEFAULT false NOT NULL
+    is_hidden        BOOL DEFAULT false NOT NULL
     )`, undefined, "Table comments created...");
+}
+
+export async function dropCommentTable() {
+  return await execAsync("DROP TABLE comments", undefined, 'drop table comments');
 }

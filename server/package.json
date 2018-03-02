@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "babel-node test/user/a.js",
-    "testtwo": "babel-node models/init.js"
+    "user": "babel-node test/usertest.js",
+    "blog": "babel-node test/blogtest.js",
+    "comment": "babel-node test/commenttest.js"
   },
   "author": "threequarters",
   "license": "ISC",
