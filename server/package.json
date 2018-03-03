@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "lint": "eslint ./",
     "user": "babel-node test/usertest.js",
     "blog": "babel-node test/blogtest.js",
     "comment": "babel-node test/commenttest.js"
@@ -20,7 +21,11 @@
     "mysql": "^2.15.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.1"
   },
-  "presets": ["es2015"]
+  "presets": [
+    "es2015"
+  ]
 }

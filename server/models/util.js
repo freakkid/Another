@@ -20,13 +20,19 @@ export async function createDatabase() {
           return;
         }
         conn.end();
-        console.log("Database created...");
+        console.log('Database created...');
         resolve();
       });
     });
   });
 }
-
+/**
+ * @param   {string} sqlstatement
+ * @param   {object} values
+ * @param   {string} message
+ * 
+ * @returns {Promise<any>}
+ */
 export async function execAsync(sqlstatement, values, message) {
   return await new Promise(function (resolve, reject) {
     const conn = mysql.createConnection(db);

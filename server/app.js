@@ -1,10 +1,10 @@
-const Koa = require('koa');
+import Koa from 'koa';
 const app = new Koa();
-const json = require('koa-json');
-const bodyparser = require('koa-bodyparser');
-const logger = require('koa-logger');
+import json from 'koa-json';
+import bodyparser from 'koa-bodyparser';
+import logger from 'koa-logger';
 
-const router = require('./routes/index')
+import router from './routes/index';
 
 app.use(bodyparser({
     enableTypes: ['json', 'form', 'text']
