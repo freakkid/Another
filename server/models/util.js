@@ -20,7 +20,7 @@ export async function createDatabase() {
           return;
         }
         conn.end();
-        console.log('Database created...');
+        // console.log('Database created...');
         resolve();
       });
     });
@@ -30,7 +30,7 @@ export async function createDatabase() {
  * @param   {string} sqlstatement
  * @param   {object} values
  * @param   {string} message
- * 
+ *
  * @returns {Promise<any>}
  */
 export async function execAsync(sqlstatement, values, message) {
@@ -47,10 +47,10 @@ export async function execAsync(sqlstatement, values, message) {
           return;
         }
         conn.end();
-        console.log(message);
+        // console.log(message);
         resolve(result);
       });
-    })
+    });
   });
 }
 
@@ -68,9 +68,9 @@ export async function selectExecAsync(sqlstatement, values, message) {
           return;
         }
         conn.end();
-        console.log(message);
+        // console.log(message);
         resolve(result);
       });
-    })
+    });
   });
 }

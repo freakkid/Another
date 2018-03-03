@@ -1,1 +1,1 @@
-export const a = {b:1, c:2};
+// export const a = {b:1, c:2};
