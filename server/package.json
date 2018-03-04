@@ -7,7 +7,8 @@
     "lint": "eslint ./",
     "user": "babel-node test/usertest.js",
     "blog": "babel-node test/blogtest.js",
-    "comment": "babel-node test/commenttest.js"
+    "comment": "babel-node test/commenttest.js",
+    "utils": "babel-node test/utilstest.js"
   },
   "author": "threequarters",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.1.0",
+    "log4js": "^2.5.3",
     "mysql": "^2.15.0"
   },
   "devDependencies": {

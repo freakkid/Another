@@ -12,6 +12,17 @@ app.use(bodyparser({
 app.use(json());
 app.use(logger());
 
+// handle error
+const handler = async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = 500;
+    ctx.response.body = 'Server error';
+  }
+}
+app.use(handler);
+
 // // logger
 // app.use(function* (next) {
 //   const start = new Date();

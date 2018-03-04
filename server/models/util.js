@@ -1,5 +1,6 @@
 import mysql from 'mysql';
 import { db } from '../config';
+import { logger } from '../utils';
 
 
 export async function createDatabase() {
@@ -20,7 +21,7 @@ export async function createDatabase() {
           return;
         }
         conn.end();
-        // console.log('Database created...');
+        logger.info('Database created...');
         resolve();
       });
     });
@@ -47,28 +48,7 @@ export async function execAsync(sqlstatement, values, message) {
           return;
         }
         conn.end();
-        // console.log(message);
-        resolve(result);
-      });
-    });
-  });
-}
-
-export async function selectExecAsync(sqlstatement, values, message) {
-  return await new Promise(function (resolve, reject) {
-    const conn = mysql.createConnection(db);
-    conn.connect(function (err) {
-      if (err) {
-        reject(err);
-        return;
-      }
-      conn.query(sqlstatement, values, function (err, result) {
-        if (err) {
-          reject(err);
-          return;
-        }
-        conn.end();
-        // console.log(message);
+        logger.info.log(message);
         resolve(result);
       });
     });
